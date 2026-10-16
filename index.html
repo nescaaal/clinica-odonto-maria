@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Odonto Maria | Dra. Ruth Costa (CRO-PB 6910) — Odontologia de Alto Padrão</title>
+  <meta name="description" content="Clínica Odonto Maria em João Pessoa (Miramar). Sob direção técnica da Dra. Ruth Costa (CRO-PB 6910). Odontologia humanizada, reabilitação estética, conforto sem dor e tecnologia de ponta." />
+  <meta name="theme-color" content="#AFA4A6" />
+
+  <!-- Google Fonts: Cinzel, Playfair Display, Plus Jakarta Sans & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Configuração Oficial da Paleta de Cores e Tipografia da Marca -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            taupe: {
+              light: '#B8ADB0',
+              DEFAULT: '#AFA4A6',
+              dark: '#9E9396',
+              deep: '#7E7275'
+            },
+            ivory: {
+              DEFAULT: '#F9F8F6',
+              warm: '#F3EFEA',
+              mist: '#EAE3DC'
+            },
+            champagne: {
+              light: '#F3E5C8',
+              DEFAULT: '#E4CFA0',
+              medium: '#D8BC82',
+              rich: '#D1B479',
+              deep: '#B9975B',
+              bronze: '#8E6D35'
+            },
+            noble: {
+              DEFAULT: '#2C2628',
+              soft: '#473E41',
+              muted: '#6B5E62'
+            },
+            border: {
+              subtle: '#D8CECE'
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            monogram: ['"Cinzel"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '"Montserrat"', 'system-ui', 'sans-serif'],
+            accent: ['"Montserrat"', 'sans-serif']
+          },
+          backgroundImage: {
+            'taupe-surface': 'linear-gradient(145deg, #B8ADB0 0%, #AFA4A6 50%, #9E9396 100%)',
+            'taupe-radial': 'radial-gradient(circle at 50% 42%, #BDB2B5 0%, #AFA4A6 52%, #988D90 100%)',
+            'gold-metallic': 'linear-gradient(135deg, #F3E5C8 0%, #D8BC82 50%, #B9975B 100%)',
+            'gold-shimmer': 'linear-gradient(135deg, #FFF8E8 0%, #E4CFA0 35%, #D1B479 70%, #B9975B 100%)',
+            'ivory-gradient': 'linear-gradient(180deg, #F9F8F6 0%, #F3EFEA 100%)'
+          },
+          boxShadow: {
+            'boutique': '0 20px 50px -15px rgba(44, 38, 40, 0.08)',
+            'boutique-lg': '0 28px 65px -15px rgba(44, 38, 40, 0.16)',
+            'gold-glow': '0 10px 30px -5px rgba(185, 151, 91, 0.38)',
+            'gold-subtle': '0 4px 20px -2px rgba(216, 188, 130, 0.22)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Estilos Customizados de Acabamento Boutique, Metálico & Parallax Fino */
+    body {
+      background-color: #F9F8F6;
+      color: #2C2628;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barra Superior de Progresso de Leitura em Ouro Champagne */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      width: 0%;
+      z-index: 60;
+      background: linear-gradient(90deg, #F3E5C8 0%, #D8BC82 50%, #B9975B 100%);
+      box-shadow: 0 1px 8px rgba(216, 188, 130, 0.65);
+      transition: width 0.08s linear;
+    }
+
+    /* Camadas Parallax com Aceleração por Hardware (60fps) */
+    [data-parallax] {
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+    }
+
+    /* Transição Editorial de Entrada Suave ao Rolar (Reveal) */
+    [data-reveal] {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+      transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    [data-reveal="scale"] {
+      transform: translate3d(0, 20px, 0) scale(0.97);
+    }
+
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      [data-parallax] {
+        transform: none !important;
+      }
+    }
+
+    /* Botão Principal com Gradiente Dourado Champagne Metálico e Brilho Delicado */
+    .btn-gold {
+      background: linear-gradient(135deg, #F3E5C8 0%, #D8BC82 52%, #B9975B 100%);
+      color: #2C2628;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 8px 25px -6px rgba(185, 151, 91, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.65);
+    }
+
+    .btn-gold::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 65%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+      transform: skewX(-24deg);
+      transition: left 0.75s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px -6px rgba(185, 151, 91, 0.58), inset 0 1px 2px rgba(255, 255, 255, 0.85);
+    }
+
+    .btn-gold:hover::before {
+      left: 140%;
+    }
+
+    /* Bordas Douradas Translúcidas Conforme Diretrizes */
+    .border-gold-translucent {
+      border-color: rgba(216, 188, 130, 0.28);
+    }
+
+    .card-boutique {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F9F8F6 100%);
+      border: 1px solid rgba(216, 188, 130, 0.32);
+      transition: border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-boutique:hover {
+      border-color: #D1B479;
+      transform: translateY(-6px);
+      box-shadow: 0 26px 52px -14px rgba(44, 38, 40, 0.12), 0 0 0 1px rgba(216, 188, 130, 0.38);
+    }
+
+    /* Linha Arquitetônica Vertical Dourada */
+    .gold-hairline-v {
+      width: 1px;
+      background: linear-gradient(180deg, transparent 0%, rgba(216, 188, 130, 0.65) 50%, transparent 100%);
+    }
+
+    .gold-hairline-h {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(216, 188, 130, 0.65) 50%, transparent 100%);
+    }
+
+    /* Animação de Pulsar Dourado Suave para o Botão Flutuante de WhatsApp */
+    @keyframes goldPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(216, 188, 130, 0.68), 0 12px 28px -4px rgba(44, 38, 40, 0.35);
+      }
+      70% {
+        box-shadow: 0 0 0 18px rgba(216, 188, 130, 0), 0 12px 28px -4px rgba(44, 38, 40, 0.35);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(216, 188, 130, 0), 0 12px 28px -4px rgba(44, 38, 40, 0.35);
+      }
+    }
+
+    .animate-gold-pulse {
+      animation: goldPulse 2.6s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+
+    /* Textura Sutil e Scrollbar Elegante */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F3EFEA;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #AFA4A6;
+      border-radius: 9999px;
+      border: 2px solid #F3EFEA;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9E9396;
+    }
+  </style>
+</head>
+<body class="bg-ivory text-noble selection:bg-champagne selection:text-noble">
+
+  <!-- Barra Fina de Progresso de Rolagem em Ouro Champagne -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ========================================================================= -->
+  <!-- DEFINIÇÃO GLOBAL DO LOGOTIPO OFICIAL 3D (SVG FIEL À FOTO COM AS 4 PERNAS DO M) -->
+  <!-- ========================================================================= -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+    <defs>
+      <!-- Sombra 3D realista sobre superfície Taupe Rosado -->
+      <filter id="om-drop-shadow" x="-15%" y="-15%" width="135%" height="135%">
+        <feDropShadow dx="4" dy="10" stdDeviation="7" flood-color="#231D1E" flood-opacity="0.38" />
+        <feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#1A1415" flood-opacity="0.28" />
+      </filter>
+
+      <!-- Filtro de brilho especular (estrelas de luz na coroa) -->
+      <filter id="om-glint-blur" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3.5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <!-- Gradientes Metálicos Multi-Stop Extraídos da Foto Oficial -->
+      <linearGradient id="om-crown-left-main" x1="207" y1="295" x2="599" y2="355" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#FDF6E2" />
+        <stop offset="14%" stop-color="#DFC48D" />
+        <stop offset="35%" stop-color="#D7BA80" />
+        <stop offset="62%" stop-color="#F7EBD0" />
+        <stop offset="78%" stop-color="#FFFDF8" />
+        <stop offset="92%" stop-color="#E5CA93" />
+        <stop offset="100%" stop-color="#B89452" />
+      </linearGradient>
+
+      <linearGradient id="om-crown-left-bevel" x1="255" y1="285" x2="599" y2="395" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#8B6A31" />
+        <stop offset="30%" stop-color="#6F5120" />
+        <stop offset="65%" stop-color="#9E7C3E" />
+        <stop offset="85%" stop-color="#DEC28A" />
+        <stop offset="100%" stop-color="#8E6C32" />
+      </linearGradient>
+
+      <linearGradient id="om-crown-right-main" x1="460" y1="260" x2="725" y2="555" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#D8BA7F" />
+        <stop offset="22%" stop-color="#FFFDF7" />
+        <stop offset="42%" stop-color="#FFFBF0" />
+        <stop offset="62%" stop-color="#EAD29E" />
+        <stop offset="82%" stop-color="#DFC38B" />
+        <stop offset="100%" stop-color="#F7EACF" />
+      </linearGradient>
+
+      <linearGradient id="om-crown-right-bevel" x1="460" y1="310" x2="710" y2="578" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#A58243" />
+        <stop offset="28%" stop-color="#C8A76A" />
+        <stop offset="50%" stop-color="#755622" />
+        <stop offset="75%" stop-color="#98753A" />
+        <stop offset="100%" stop-color="#7B5B26" />
+      </linearGradient>
+
+      <linearGradient id="om-left-root-main" x1="220" y1="360" x2="365" y2="766" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#F6E8C8" />
+        <stop offset="18%" stop-color="#FFFDF8" />
+        <stop offset="40%" stop-color="#E8CE97" />
+        <stop offset="68%" stop-color="#C39E5C" />
+        <stop offset="88%" stop-color="#A88240" />
+        <stop offset="100%" stop-color="#E5CA92" />
+      </linearGradient>
+
+      <linearGradient id="om-left-root-bevel" x1="250" y1="360" x2="375" y2="766" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#B99758" />
+        <stop offset="45%" stop-color="#F7E9C8" />
+        <stop offset="80%" stop-color="#8D6B32" />
+        <stop offset="100%" stop-color="#6F511F" />
+      </linearGradient>
+
+      <linearGradient id="om-m-lit" x1="350" y1="350" x2="640" y2="780" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#FFFDF7" />
+        <stop offset="22%" stop-color="#F9EDD2" />
+        <stop offset="48%" stop-color="#E7CC95" />
+        <stop offset="75%" stop-color="#D5B475" />
+        <stop offset="100%" stop-color="#F3E2BE" />
+      </linearGradient>
+
+      <linearGradient id="om-m-shade" x1="370" y1="380" x2="620" y2="795" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#8C6A30" />
+        <stop offset="25%" stop-color="#B79353" />
+        <stop offset="55%" stop-color="#9A7638" />
+        <stop offset="82%" stop-color="#7D5C25" />
+        <stop offset="100%" stop-color="#684B1B" />
+      </linearGradient>
+
+      <linearGradient id="om-m-right-lit" x1="635" y1="390" x2="652" y2="694" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#F5E4C0" />
+        <stop offset="30%" stop-color="#FFFDF8" />
+        <stop offset="65%" stop-color="#F4E3BE" />
+        <stop offset="100%" stop-color="#D8B87A" />
+      </linearGradient>
+
+      <linearGradient id="om-m-right-shade" x1="650" y1="390" x2="684" y2="694" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#C8A668" />
+        <stop offset="35%" stop-color="#B38F4F" />
+        <stop offset="75%" stop-color="#9B783B" />
+        <stop offset="100%" stop-color="#765723" />
+      </linearGradient>
+
+      <!-- Símbolo Reutilizável da Logo Oficial Odonto Maria -->
+      <symbol id="logo-odonto-maria" viewBox="170 210 600 615">
+        <g filter="url(#om-drop-shadow)">
+          <!-- 1. COROA SUPERIOR ESQUERDA -->
+          <g>
+            <path d="M 204 339 C 212 280, 250 241, 302 241 C 357 241, 406 282, 457 320 C 493 347, 543 360, 602 327 C 576 380, 539 402, 506 402 C 463 402, 420 370, 370 330 C 335 301, 313 287, 294 288 C 274 289, 265 310, 260 339 Z" fill="url(#om-crown-left-bevel)" />
+            <path d="M 209 333 C 217 281, 253 245, 302 245 C 355 245, 404 285, 455 323 C 491 350, 540 362, 596 332 C 570 374, 536 391, 505 391 C 464 391, 422 361, 372 321 C 336 292, 313 278, 293 279 C 270 280, 259 303, 254 333 Z" fill="url(#om-crown-left-main)" />
+            <path d="M 432 366 C 462 387, 486 391, 505 391 C 536 391, 570 374, 596 332 L 602 327 C 576 380, 539 402, 506 402 C 480 402, 454 390, 432 366 Z" fill="#C7A66B" opacity="0.85" />
+            <path d="M 210 332 C 218 282, 254 246, 302 246 C 354 246, 403 286, 455 324 C 491 351, 540 362, 595 333" fill="none" stroke="#FFFDF8" stroke-width="1.6" stroke-linecap="round" opacity="0.85" />
+          </g>
+
+          <!-- 2. COROA SUPERIOR DIREITA E FLANCO LATERAL DIREITO -->
+          <g>
+            <path d="M 457 294 C 483 312, 506 310, 538 283 C 572 256, 604 241, 636 241 C 689 241, 730 281, 736 348 C 742 416, 722 499, 688 582 C 691 514, 693 438, 687 384 C 681 329, 666 289, 631 289 C 601 289, 575 316, 543 334 C 511 351, 482 336, 457 294 Z" fill="url(#om-crown-right-bevel)" />
+            <path d="M 462 298 C 485 313, 507 311, 539 285 C 573 258, 604 245, 636 245 C 686 245, 725 283, 731 348 C 737 413, 718 494, 690 573 C 695 508, 698 436, 692 382 C 686 324, 670 281, 632 281 C 600 281, 574 308, 542 325 C 512 341, 485 329, 462 298 Z" fill="url(#om-crown-right-main)" />
+            <path d="M 457 294 C 482 329, 511 341, 542 325 C 574 308, 600 281, 632 281 L 631 289 C 601 289, 575 316, 543 334 C 511 351, 482 336, 457 294 Z" fill="#C9A86A" />
+            <path d="M 463 298 C 486 312, 508 310, 539 285 C 573 258, 604 245, 636 245 C 686 245, 725 283, 731 348 C 736 404, 721 478, 691 568" fill="none" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" opacity="0.9" />
+          </g>
+
+          <!-- 3. PAREDE EXTERNA / RAIZ ESQUERDA -->
+          <g>
+            <path d="M 203 367 L 256 358 C 256 445, 275 535, 315 632 C 337 685, 357 728, 376 767 C 336 720, 291 658, 255 588 C 219 518, 202 442, 203 367 Z" fill="url(#om-left-root-bevel)" />
+            <path d="M 207 371 L 250 363 C 251 447, 270 536, 310 632 C 331 682, 351 723, 371 761 C 334 716, 292 655, 257 586 C 222 517, 206 443, 207 371 Z" fill="url(#om-left-root-main)" />
+            <path d="M 207 371 L 250 363 C 251 447, 270 536, 310 632 C 331 682, 351 723, 371 761" fill="none" stroke="#FFFDF6" stroke-width="1.5" stroke-linecap="round" opacity="0.85" />
+          </g>
+
+          <!-- 4. MONOGRAMA "M" COMPLETO (4 PERNAS COM BISEL 3D, SERIFAS ROMANAS E RAIZ CENTRAL) -->
+          <g>
+            <!-- PERNA 1 DO M: Haste Vertical Esquerda com Serifa de Pedestal Romana -->
+            <path d="M 376 388 L 383 393 L 383 684 L 353 694 C 367 688, 375 678, 376 662 Z" fill="url(#om-m-lit)" />
+            <path d="M 383 393 L 390 400 L 390 662 C 391 678, 399 688, 413 694 L 383 684 Z" fill="url(#om-m-shade)" />
+            <polygon points="353,694 383,684 413,694 410,696 356,696" fill="#6B4E1E" />
+            <line x1="354" y1="693.5" x2="412" y2="693.5" stroke="#F8E9C8" stroke-width="1" opacity="0.75" />
+
+            <!-- PERNA 3 DO M: Haste Diagonal Ascendente (Do vértice central 522,655 ao topo da coluna direita 636,391) -->
+            <path d="M 522 655 L 636 391 L 640 398 L 529 663 Z" fill="url(#om-m-lit)" />
+            <path d="M 529 663 L 640 398 L 644 411 L 537 672 C 534 667, 531 664, 529 663 Z" fill="url(#om-m-shade)" />
+            <line x1="523" y1="656" x2="636" y2="391" stroke="#FFFDF7" stroke-width="1.3" stroke-linecap="round" opacity="0.9" />
+
+            <!-- PERNA 2 DO M: Arco Superior Esquerdo + Haste Diagonal Descendente Espessa + Ápice da Raiz Central-Direita -->
+            <path d="M 206 357 C 248 339, 297 339, 345 361 C 380 377, 407 408, 435 456 C 469 514, 502 586, 535 656 C 558 704, 585 754, 621 797 C 582 758, 550 706, 521 656 C 488 586, 454 514, 420 452 C 394 405, 368 377, 339 365 C 294 345, 248 345, 206 357 Z" fill="url(#om-m-lit)" />
+            <path d="M 206 357 C 248 345, 294 345, 339 365 C 368 377, 394 405, 420 452 C 454 514, 488 586, 521 656 C 550 706, 582 758, 621 797 C 575 763, 537 711, 508 652 C 475 584, 441 510, 405 446 C 385 410, 365 385, 335 370 C 291 348, 248 348, 206 357 Z" fill="url(#om-m-shade)" />
+            <path d="M 521 656 L 535 656 L 539 676 L 529 663 Z" fill="#E8CE97" opacity="0.9" />
+            <path d="M 208 357 C 248 343, 295 343, 341 363 C 372 377, 398 406, 425 453 C 459 514, 493 586, 525 656 C 553 706, 583 757, 620 796" fill="none" stroke="#FFFDF8" stroke-width="1.6" stroke-linecap="round" opacity="0.88" />
+
+            <!-- PERNA 4 DO M: Coluna Vertical Direita com Serifa Superior e Pedestal Romano Inferior -->
+            <path d="M 635 391 L 650 397 L 650 683 L 615 694 C 628 688, 634 678, 635 662 Z" fill="url(#om-m-right-lit)" />
+            <path d="M 650 397 L 684 391 C 671 397, 665 407, 665 422 L 665 662 C 666 678, 672 688, 684 694 L 650 683 Z" fill="url(#om-m-right-shade)" />
+            <polygon points="635,391 684,391 650,397" fill="#FFFBF0" />
+            <polygon points="615,694 650,683 684,694 681,696 618,696" fill="#6B4E1E" />
+            <line x1="616" y1="693.5" x2="683" y2="693.5" stroke="#F8E9C8" stroke-width="1" opacity="0.75" />
+            <line x1="650" y1="397" x2="650" y2="683" stroke="#FFFDF8" stroke-width="1.5" stroke-linecap="round" opacity="0.85" />
+          </g>
+
+          <!-- 5. BRILHOS ESPECULARES FIÉIS À FOTO OFICIAL -->
+          <g transform="translate(500, 349)" filter="url(#om-glint-blur)" opacity="0.92">
+            <ellipse cx="0" cy="0" rx="14" ry="5" transform="rotate(18)" fill="#FFFFFF" opacity="0.65" />
+            <path d="M -18 0 L 18 0 M 0 -12 L 0 12" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="3.5" fill="#FFFFFF" />
+          </g>
+          <g transform="translate(634, 244)" filter="url(#om-glint-blur)" opacity="0.95">
+            <circle cx="0" cy="0" r="7" fill="#FFFFFF" opacity="0.6" />
+            <path d="M -16 0 L 16 0 M 0 -16 L 0 16 M -8 -8 L 8 8 M -8 8 L 8 -8" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
+          </g>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ========================================================================= -->
+  <!-- TOPBAR INSTITUCIONAL                                                      -->
+  <!-- ========================================================================= -->
+  <div class="bg-noble text-ivory/90 border-b border-champagne/20 text-xs relative z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+        <span class="inline-flex items-center gap-1.5 text-champagne font-medium tracking-wide">
+          <i data-lucide="award" class="w-3.5 h-3.5 text-champagne-medium"></i>
+          Responsável Técnica: Dra. Ruth Costa • <strong class="text-champagne-light font-semibold">CRO-PB 6910</strong>
+        </span>
+        <span class="hidden md:inline-flex items-center gap-1.5 text-ivory/75">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-champagne-medium"></i>
+          Seg a Sex: 08h às 19h • Sáb: Atendimento com Hora Marcada
+        </span>
+      </div>
+      <div class="flex items-center gap-5 ml-auto">
+        <a href="https://maps.app.goo.gl/dMkkpBZb4QKZN66p6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-ivory/80 hover:text-champagne transition-colors">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-champagne-medium"></i>
+          <span>Miramar, João Pessoa - PB</span>
+          <i data-lucide="arrow-up-right" class="w-3 h-3 opacity-70"></i>
+        </a>
+        <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Odonto%20Maria%20com%20a%20Dra.%20Ruth%20Costa." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 text-champagne hover:text-champagne-light font-medium transition-colors">
+          <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+          <span>(83) 99157-9251</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- NAVBAR ELEGANTE E FIXA                                                    -->
+  <!-- ========================================================================= -->
+  <header id="navbar" class="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-champagne/30 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4 lg:gap-8">
+      
+      <!-- Logotipo Oficial + Identidade Limpa e Sem Quebras -->
+      <a href="#inicio" class="group flex items-center gap-3 focus:outline-none shrink-0" aria-label="Clínica Odonto Maria - Dra. Ruth Costa">
+        <div class="relative w-12 h-12 rounded-xl overflow-hidden shadow-sm border border-champagne/50 shrink-0">
+          <img
+            src="logo-oficial-odonto-maria.jpg"
+            alt="Logo Clínica Odonto Maria"
+            class="w-full h-full object-cover scale-125"
+          />
+        </div>
+        <div class="flex flex-col whitespace-nowrap">
+          <span class="font-monogram text-lg sm:text-xl font-semibold tracking-[0.16em] text-noble leading-none">ODONTO MARIA</span>
+          <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-champagne-bronze font-medium mt-1">Dra. Ruth Costa • CRO-PB 6910</span>
+        </div>
+      </a>
+
+      <!-- Links de Navegação Desktop Elegantes e Espaçados -->
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-medium text-noble-soft shrink-0" aria-label="Navegação Principal">
+        <a href="#inicio" class="whitespace-nowrap hover:text-champagne-bronze transition-colors py-1">Início</a>
+        <a href="#sobre" class="whitespace-nowrap hover:text-champagne-bronze transition-colors py-1">A Clínica</a>
+        <a href="#tratamentos" class="whitespace-nowrap hover:text-champagne-bronze transition-colors py-1">Tratamentos</a>
+        <a href="#experiencia" class="whitespace-nowrap hover:text-champagne-bronze transition-colors py-1">A Experiência</a>
+        <a href="#localizacao" class="whitespace-nowrap hover:text-champagne-bronze transition-colors py-1">Localização</a>
+        <a href="#duvidas" class="whitespace-nowrap hover:text-champagne-bronze transition-colors py-1">Dúvidas</a>
+      </nav>
+
+      <!-- Botão de Destaque: Agendar Avaliação -->
+      <div class="hidden sm:flex items-center shrink-0">
+        <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Odonto%20Maria%20com%20a%20Dra.%20Ruth%20Costa."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-gold whitespace-nowrap px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 shadow-sm">
+          <i data-lucide="calendar-check-2" class="w-4 h-4 text-noble"></i>
+          <span>Agendar Avaliação</span>
+        </a>
+      </div>
+
+      <!-- Botão Menu Mobile -->
+      <button id="mobile-menu-btn" type="button" class="lg:hidden p-2.5 rounded-xl border border-border-subtle text-noble hover:bg-ivory-warm transition-colors" aria-label="Abrir Menu" aria-expanded="false">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-ivory border-t border-border-subtle px-4 pt-3 pb-6 space-y-3 shadow-xl">
+      <nav class="flex flex-col space-y-1 text-sm font-medium text-noble">
+        <a href="#inicio" class="mobile-nav-link px-3 py-2.5 rounded-lg hover:bg-ivory-warm transition-colors">Início</a>
+        <a href="#sobre" class="mobile-nav-link px-3 py-2.5 rounded-lg hover:bg-ivory-warm transition-colors">Sobre a Clínica &amp; Dra. Ruth Costa</a>
+        <a href="#tratamentos" class="mobile-nav-link px-3 py-2.5 rounded-lg hover:bg-ivory-warm transition-colors">Tratamentos de Excelência</a>
+        <a href="#experiencia" class="mobile-nav-link px-3 py-2.5 rounded-lg hover:bg-ivory-warm transition-colors">A Experiência Odonto Maria</a>
+        <a href="#localizacao" class="mobile-nav-link px-3 py-2.5 rounded-lg hover:bg-ivory-warm transition-colors">Localização e Contato</a>
+        <a href="#duvidas" class="mobile-nav-link px-3 py-2.5 rounded-lg hover:bg-ivory-warm transition-colors">Perguntas Frequentes</a>
+      </nav>
+      <div class="pt-2 border-t border-border-subtle flex flex-col gap-2.5">
+        <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Odonto%20Maria%20com%20a%20Dra.%20Ruth%20Costa."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-gold w-full py-3 rounded-full text-sm font-semibold text-center inline-flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Agendar Avaliação pelo WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================= -->
+    <!-- HERO SECTION DE ALTO IMPACTO COM CAMADAS PARALLAX FINAS                   -->
+    <!-- ========================================================================= -->
+    <section id="inicio" class="relative overflow-hidden bg-taupe-surface text-noble py-18 sm:py-24 lg:py-28 border-b border-champagne/30">
+      <!-- Camadas Atmosféricas em Parallax Suave -->
+      <div data-parallax="-0.22" class="pointer-events-none absolute -top-28 -left-28 w-[26rem] h-[26rem] rounded-full bg-champagne-light/30 blur-3xl"></div>
+      <div data-parallax="0.18" class="pointer-events-none absolute top-1/4 -right-20 w-[32rem] h-[32rem] rounded-full bg-ivory/25 blur-3xl"></div>
+
+      <!-- Marca d'Água Arquitetônica Gigante em Parallax Lento -->
+      <div data-parallax="0.16" class="pointer-events-none absolute -right-16 -bottom-20 w-[34rem] h-[34rem] opacity-[0.055] select-none hidden md:block">
+        <svg class="w-full h-full" aria-hidden="true">
+          <use href="#logo-odonto-maria"></use>
+        </svg>
+      </div>
+
+      <!-- Linhas Geométricas Finas de Arquitetura Boutique em Parallax -->
+      <div data-parallax="-0.12" class="pointer-events-none absolute top-12 left-8 bottom-12 gold-hairline-v hidden xl:block opacity-50"></div>
+      <div data-parallax="0.10" class="pointer-events-none absolute top-12 right-8 bottom-12 gold-hairline-v hidden xl:block opacity-50"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+
+          <!-- Coluna Esquerda: Copywriting de Alta Conversão Arejado e Nobre -->
+          <div data-parallax="-0.03" class="lg:col-span-7 space-y-6 sm:space-y-7">
+            <!-- Selo Superior Boutique -->
+            <div data-reveal class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-ivory/90 backdrop-blur-sm border border-champagne/45 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-champagne-bronze"></span>
+              <span class="text-xs uppercase tracking-[0.2em] text-noble font-semibold">
+                Odontologia Humanizada &amp; Reabilitação Estética
+              </span>
+            </div>
+
+            <!-- Título Refinado Oficial -->
+            <h1 data-reveal style="transition-delay: 80ms;" class="font-display text-3xl sm:text-5xl lg:text-[3.35rem] font-semibold text-noble leading-[1.16] tracking-tight">
+              A harmonia, a precisão e o cuidado que o seu sorriso merece.
+            </h1>
+
+            <!-- Subtítulo Focado na Experiência Sem Estresse e Atendimento Personalizado -->
+            <p data-reveal style="transition-delay: 160ms;" class="text-base sm:text-lg text-noble/85 leading-relaxed max-w-2xl font-normal">
+              Redescubra a tranquilidade de cuidar de si em uma clínica boutique concebida para o seu bem-estar. Sob o olhar clínico e artístico da <strong class="font-semibold text-noble">Dra. Ruth Costa (CRO-PB 6910)</strong>, unimos tratamentos precisos, ambiente livre de estresse, protocolos sem dor e tecnologia digital de ponta para revelar a beleza natural do seu sorriso.
+            </p>
+
+            <!-- CTAs Principais -->
+            <div data-reveal style="transition-delay: 240ms;" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+              <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20Consulta%20de%20Avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20Odonto%20Maria%20com%20a%20Dra.%20Ruth%20Costa."
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn-gold whitespace-nowrap px-8 py-4 rounded-full text-sm sm:text-base font-semibold tracking-wide inline-flex items-center justify-center gap-3 shadow-gold-subtle">
+                <i data-lucide="sparkles" class="w-5 h-5 text-noble"></i>
+                <span>Agendar Consulta de Avaliação</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-noble"></i>
+              </a>
+
+              <a href="#tratamentos"
+                 class="whitespace-nowrap px-7 py-4 rounded-full text-sm sm:text-base font-medium text-noble bg-ivory/85 hover:bg-white border border-champagne/45 shadow-sm transition-all inline-flex items-center justify-center gap-2">
+                <span>Conhecer Especialidades</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-champagne-bronze"></i>
+              </a>
+            </div>
+
+            <!-- Badges de Autoridade Discretos e Elegantes (Sem Amontoar) -->
+            <div data-reveal style="transition-delay: 320ms;" class="pt-5 border-t border-champagne/30 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <!-- Badge 1 -->
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gold-metallic border border-champagne-light/60 flex items-center justify-center shrink-0 shadow-gold-subtle text-noble">
+                  <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-noble">Ambiente Acolhedor</p>
+                  <p class="text-[11px] text-noble-soft">Atendimento calmo sem dor</p>
+                </div>
+              </div>
+
+              <!-- Badge 2 -->
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gold-metallic border border-champagne-light/60 flex items-center justify-center shrink-0 shadow-gold-subtle text-noble">
+                  <i data-lucide="scan-face" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-noble">Tecnologia 3D</p>
+                  <p class="text-[11px] text-noble-soft">Previsibilidade digital</p>
+                </div>
+              </div>
+
+              <!-- Badge 3 -->
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gold-metallic border border-champagne-light/60 flex items-center justify-center shrink-0 shadow-gold-subtle text-noble">
+                  <i data-lucide="clock-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-noble">Pontualidade &amp; Conforto</p>
+                  <p class="text-[11px] text-noble-soft">Agenda exclusiva por paciente</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Emblema Oficial Odonto Maria em Moldura Boutique Luminous -->
+          <div class="lg:col-span-5">
+            <div data-reveal="scale" style="transition-delay: 150ms;" class="relative mx-auto max-w-sm sm:max-w-md">
+              <!-- Aura Dourada Champagne de Fundo -->
+              <div data-parallax="0.08" class="absolute -inset-4 bg-gradient-to-tr from-champagne/25 via-champagne-light/35 to-transparent rounded-[2.5rem] blur-2xl pointer-events-none"></div>
+
+              <!-- Moldura Externa em Contra-Parallax -->
+              <div data-parallax="-0.06" class="absolute -inset-3 rounded-[2.25rem] border border-champagne/50 pointer-events-none"></div>
+
+              <!-- Badge Flutuante de Excelência (Posicionado no topo para NUNCA tampar a localização) -->
+              <div data-parallax="0.08" class="absolute -top-4 -right-2 sm:-right-5 z-20 rounded-2xl bg-white/95 backdrop-blur-md px-4 py-2.5 border border-champagne/50 shadow-boutique flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-gold-metallic flex items-center justify-center text-noble shadow-sm shrink-0">
+                  <i data-lucide="crown" class="w-4 h-4"></i>
+                </div>
+                <div class="text-left whitespace-nowrap">
+                  <p class="text-xs font-bold text-noble">Reabilitação Oral &amp; Estética</p>
+                  <p class="text-[10px] text-champagne-bronze font-semibold">Atendimento Humanizado</p>
+                </div>
+              </div>
+
+              <!-- Pedestal Principal: Fundo Nobre, Arejado e Limpo -->
+              <div id="hero-emblem-card" data-parallax="-0.04" class="relative rounded-[2rem] bg-gradient-to-b from-ivory via-ivory to-ivory-warm p-7 sm:p-9 border border-champagne/60 shadow-boutique-lg overflow-hidden text-center transition-transform duration-300">
+                
+                <!-- Cabeçalho do Card Boutique -->
+                <div class="relative z-10 flex items-center justify-between border-b border-champagne/35 pb-4 mb-5">
+                  <span class="font-monogram text-[11px] tracking-[0.22em] uppercase text-noble-muted font-semibold">
+                    Odontologia Boutique
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-taupe/20 border border-champagne/40 text-noble text-xs font-semibold">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-champagne-bronze"></i>
+                    CRO-PB 6910
+                  </span>
+                </div>
+
+                <!-- Placa Central com o Logotipo Oficial com Borda Delicada -->
+                <div data-parallax="0.03" class="relative z-10 aspect-square w-full max-w-[280px] mx-auto overflow-hidden rounded-2xl shadow-xl border border-champagne/50 bg-taupe/15 p-1 group">
+                  <img
+                    src="logo-oficial-odonto-maria.jpg"
+                    alt="Logotipo Oficial Clínica Odonto Maria — Dra. Ruth Costa (CRO-PB 6910)"
+                    class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                <!-- Assinatura da Marca e Localização Oficial Livre e Destacada -->
+                <div class="relative z-10 mt-5 pt-4 border-t border-champagne/30 text-center space-y-1.5 pb-2">
+                  <h3 class="font-monogram text-2xl sm:text-[1.65rem] tracking-[0.2em] text-noble font-semibold">
+                    ODONTO MARIA
+                  </h3>
+                  <p class="font-display italic text-sm text-champagne-bronze font-medium">
+                    Dra. Ruth Costa • Responsável Técnica
+                  </p>
+                  <div class="pt-2 flex items-center justify-center">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-taupe/20 border border-champagne/40 text-xs font-semibold text-noble uppercase tracking-wider shadow-xs">
+                      <i data-lucide="map-pin" class="w-3.5 h-3.5 text-champagne-bronze"></i>
+                      <span>Miramar • João Pessoa - PB</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- FAIXA DE CREDENCIAIS E COMPROMISSO ÉTICO                                  -->
+    <!-- ========================================================================= -->
+    <section class="bg-ivory-warm border-b border-border-subtle py-10 sm:py-12 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div data-reveal class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-ivory/60 border border-champagne/30">
+            <div class="w-11 h-11 rounded-xl bg-gold-metallic/35 border border-champagne/45 flex items-center justify-center text-champagne-bronze shrink-0 shadow-sm">
+              <i data-lucide="user-check" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-widest text-noble-muted font-semibold">Direção Técnica</p>
+              <p class="text-xs sm:text-sm font-bold text-noble">Dra. Ruth Costa <span class="text-champagne-bronze font-normal">(CRO 6910)</span></p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-ivory/60 border border-champagne/30">
+            <div class="w-11 h-11 rounded-xl bg-gold-metallic/35 border border-champagne/45 flex items-center justify-center text-champagne-bronze shrink-0 shadow-sm">
+              <i data-lucide="feather" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-widest text-noble-muted font-semibold">Filosofia Clínica</p>
+              <p class="text-xs sm:text-sm font-bold text-noble">Conforto Absoluto &amp; Sem Dor</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-ivory/60 border border-champagne/30">
+            <div class="w-11 h-11 rounded-xl bg-gold-metallic/35 border border-champagne/45 flex items-center justify-center text-champagne-bronze shrink-0 shadow-sm">
+              <i data-lucide="gem" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-widest text-noble-muted font-semibold">Estética Natural</p>
+              <p class="text-xs sm:text-sm font-bold text-noble">Proporção Áurea &amp; Visagismo</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-ivory/60 border border-champagne/30">
+            <div class="w-11 h-11 rounded-xl bg-gold-metallic/35 border border-champagne/45 flex items-center justify-center text-champagne-bronze shrink-0 shadow-sm">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="text-[11px] uppercase tracking-widest text-noble-muted font-semibold">Localização Nobre</p>
+              <p class="text-xs sm:text-sm font-bold text-noble">Miramar, João Pessoa - PB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SOBRE A CLÍNICA E A DRA. RUTH COSTA (COM MOLDURAS EM PARALLAX EDITORIAL)  -->
+    <!-- ========================================================================= -->
+    <section id="sobre" class="py-20 sm:py-28 bg-ivory relative overflow-hidden">
+      <!-- Elementos Atmosféricos de Fundo em Parallax Suave -->
+      <div data-parallax="-0.14" class="pointer-events-none absolute top-20 -right-24 w-80 h-80 rounded-full bg-champagne-light/30 blur-3xl"></div>
+      <div data-parallax="0.12" class="pointer-events-none absolute -bottom-16 -left-24 w-80 h-80 rounded-full bg-taupe/15 blur-3xl"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+          <!-- Espaço Harmônico para Retrato Profissional da Dra. Ruth Costa com Parallax de Camadas -->
+          <div class="lg:col-span-5">
+            <div data-reveal="scale" class="relative mx-auto max-w-md">
+              <!-- Moldura Dourada Superior Deslocada em Parallax (-0.09) -->
+              <div data-parallax="-0.09" class="absolute -top-5 -left-5 w-full h-full rounded-[2rem] border-2 border-champagne-medium/55 pointer-events-none"></div>
+              <!-- Bloco Taupe Inferior Deslocado em Contra-Parallax (+0.09) -->
+              <div data-parallax="0.09" class="absolute -bottom-5 -right-5 w-full h-full rounded-[2rem] bg-taupe/25 pointer-events-none"></div>
+
+              <!-- Card de Retrato da Dra. Ruth Costa -->
+              <div class="relative rounded-[2rem] overflow-hidden bg-taupe-surface border border-champagne/50 shadow-boutique-lg">
+                <div class="aspect-[4/5] relative overflow-hidden bg-gradient-to-b from-taupe-light via-taupe to-taupe-dark flex flex-col justify-between p-6 sm:p-8">
+                  <!-- Imagem Editorial com Efeito Window-Parallax Interno -->
+                  <div data-parallax="0.07" class="absolute -inset-6">
+                    <img
+                      id="dra-ruth-portrait"
+                      src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1000&q=85"
+                      alt="Retrato Profissional — Dra. Ruth Costa, Cirurgiã-Dentista Responsável Técnica da Clínica Odonto Maria (CRO-PB 6910)"
+                      class="w-full h-full object-cover object-top mix-blend-normal"
+                    />
+                  </div>
+                  <!-- Gradiente Suave na Base para Leitura da Credencial -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-noble/90 via-noble/25 to-transparent"></div>
+
+                  <!-- Badge Superior com Monograma -->
+                  <div class="relative z-10 flex items-center justify-between">
+                    <span class="px-3.5 py-1.5 rounded-full bg-ivory/90 backdrop-blur-md text-noble text-xs font-semibold tracking-wider border border-champagne/40 shadow-sm">
+                      Responsável Técnica
+                    </span>
+                    <div class="relative w-12 h-12 rounded-2xl overflow-hidden shadow-md border border-champagne/40 shrink-0">
+                      <img
+                        src="logo-oficial-odonto-maria.jpg"
+                        alt="Logo Clínica Odonto Maria"
+                        class="w-full h-full object-cover scale-125"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Assinatura e CRO na Base do Retrato -->
+                  <div class="relative z-10 text-ivory pt-12">
+                    <p class="text-xs uppercase tracking-[0.22em] text-champagne font-semibold">
+                      Direção Clínica &amp; Reabilitação Estética
+                    </p>
+                    <h3 class="font-display text-2xl sm:text-3xl font-semibold text-ivory mt-1">
+                      Dra. Ruth Costa
+                    </h3>
+                    <p class="text-xs text-ivory/80 mt-0.5">
+                      Dra. Maria Ruth Costa Rodrigues • Cirurgiã-Dentista
+                    </p>
+                    <div class="mt-3 pt-3 border-t border-champagne/30 flex items-center justify-between text-xs">
+                      <span class="font-monogram tracking-widest text-champagne-light font-semibold">CRO-PB 6910</span>
+                      <span class="text-ivory/85 inline-flex items-center gap-1">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-champagne"></i>
+                        Odonto Maria • João Pessoa
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copy Humanizada sobre a Clínica Odonto Maria e a Dra. Ruth Costa -->
+          <div data-parallax="-0.03" class="lg:col-span-7 space-y-6">
+            <div data-reveal class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ivory-warm border border-champagne/40">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-champagne-bronze"></i>
+              <span class="text-xs uppercase tracking-[0.2em] text-noble-soft font-semibold">
+                Sobre a Clínica &amp; Responsável Técnica
+              </span>
+            </div>
+
+            <h2 data-reveal style="transition-delay: 80ms;" class="font-display text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold text-noble leading-tight">
+              Ciência odontológica, estética natural e a arte da <span class="italic font-normal text-champagne-bronze">escuta ativa</span>.
+            </h2>
+
+            <p data-reveal style="transition-delay: 140ms;" class="text-noble-soft text-base sm:text-lg leading-relaxed">
+              A <strong class="text-noble font-semibold">Clínica Odonto Maria</strong> nasceu do propósito de transformar profundamente a relação das pessoas com o cuidado odontológico. Aqui, cada consulta começa com tempo de qualidade e atenção genuína à sua história, às suas expectativas e à sua sensibilidade.
+            </p>
+
+            <p data-reveal style="transition-delay: 200ms;" class="text-noble-soft text-base leading-relaxed">
+              Sob a liderança técnica da <strong class="text-noble font-semibold">Dra. Ruth Costa (CRO-PB 6910)</strong>, nossa atuação rejeita padrões artificiais ou atendimentos apressados. Combinamos rigor científico, materiais biocompatíveis de excelência internacional e planejamento digital individualizado para devolver saúde, função mastigatória e um sorriso elegante que respeita a identidade do seu rosto.
+            </p>
+
+            <!-- Pilares da Filosofia Dra. Ruth Costa -->
+            <div data-reveal style="transition-delay: 260ms;" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-5 rounded-2xl bg-ivory-warm border border-gold-translucent">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-gold-metallic flex items-center justify-center text-noble">
+                    <i data-lucide="ear" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="font-display font-semibold text-base text-noble">Escuta Ativa &amp; Empatia</h4>
+                </div>
+                <p class="text-xs sm:text-sm text-noble-soft leading-relaxed">
+                  Compreendemos seus receios e objetivos antes de qualquer intervenção, explicando cada etapa com transparência e serenidade.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-ivory-warm border border-gold-translucent">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-gold-metallic flex items-center justify-center text-noble">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="font-display font-semibold text-base text-noble">Preservação Biológica</h4>
+                </div>
+                <p class="text-xs sm:text-sm text-noble-soft leading-relaxed">
+                  Odontologia minimamente invasiva que valoriza a estrutura natural dos dentes, longevidade clínica e harmonia orofacial.
+                </p>
+              </div>
+            </div>
+
+            <!-- Credencial Oficial Destacada -->
+            <div data-reveal style="transition-delay: 320ms;" class="p-5 sm:p-6 rounded-2xl bg-taupe/15 border border-champagne/45 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start sm:items-center gap-4">
+                <div class="relative w-14 h-14 rounded-2xl overflow-hidden shadow-md border border-champagne/40 shrink-0">
+                  <img
+                    src="logo-oficial-odonto-maria.jpg"
+                    alt="Logo Clínica Odonto Maria"
+                    class="w-full h-full object-cover scale-125"
+                  />
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-[0.18em] text-noble-muted font-semibold">Registro Profissional Oficial</p>
+                  <p class="font-display text-lg font-semibold text-noble">
+                    Dra. Ruth Costa — Responsável Técnica | <span class="text-champagne-bronze">CRO-PB 6910</span>
+                  </p>
+                </div>
+              </div>
+              <a href="https://wa.me/5583991579251?text=Ol%C3%A1%2C%20Dra.%20Ruth%20Costa!%20Gostaria%20de%20agendar%20uma%20consulta%20personalizada%20na%20Cl%C3%ADnica%20Odonto%20Maria."
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn-gold px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide inline-flex items-center justify-center gap-2 shrink-0">
+                <span>Falar com a Equipe</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TRATAMENTOS DE EXCELÊNCIA (CARDS MINIMALISTAS COM BORDAS DOURADAS)        -->
+    <!-- ========================================================================= -->
+    <section id="tratamentos" class="py-20 sm:py-28 bg-ivory-warm border-y border-border-subtle relative overflow-hidden">
+      <!-- Ornamentos Sutis de Fundo em Parallax -->
+      <div data-parallax="0.14" class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[42rem] h-[18rem] rounded-full bg-champagne-light/25 blur-3xl"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Cabeçalho da Seção -->
+        <div data-reveal class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ivory border border-champagne/45 shadow-sm">
+            <i data-lucide="crown" class="w-3.5 h-3.5 text-champagne-bronze"></i>
+            <span class="text-xs uppercase tracking-[0.2em] text-noble font-semibold">Especialidades Boutique</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-noble">
+            Tratamentos de Excelência
+          </h2>
+          <p class="text-noble-soft text-base sm:text-lg leading-relaxed">
+            Protocolos clínicos personalizados que aliam estética refinada, previsibilidade digital e máximo conforto em todas as etapas do seu tratamento.
+          </p>
+        </div>
+
+        <!-- Grid de 4 Cards Minimalistas com Bordas Douradas e Parallax Assíncrono Suave -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
+
+          <!-- Card 1: Alinhadores Invisíveis -->
+          <div data-parallax="-0.025">
+            <article data-reveal class="card-boutique h-full rounded-[1.75rem] p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-36 h-36 bg-champagne/10 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-110"></div>
+              <div>
+                <div class="flex items-center justify-between gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-gold-metallic flex items-center justify-center text-noble shadow-gold-subtle">
+                    <i data-lucide="smile-plus" class="w-6 h-6"></i>
+                  </div>
+                  <span class="px-3.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-widest bg-ivory-warm text-noble-soft border border-champagne/40">
+                    Ortodontia Digital
+                  </span>
+                </div>
+
+                <h3 class="font-display text-2xl font-semibold text-noble mb-3">
+                  Alinhadores Invisíveis
+                </h3>
+                <p class="text-noble-soft text-sm sm:text-base leading-relaxed mb-6">
+                  Discrição absoluta e previsibilidade digital para alinhar o seu sorriso sem bráquetes metálicos. Planejamento tridimensional que permite visualizar a evolução do tratamento com conforto e liberdade ao sorrir e se alimentar.
+                </p>
+
+                <ul class="space-y-2.5 text-xs sm:text-sm text-noble-soft border-t border-border-subtle pt-5 mb-7">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Placas transparentes, removíveis e altamente confortáveis</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Escaneamento intraoral 3D sem massas ou moldagens desconfortáveis</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Higiene facilitada e consultas de acompanhamento otimizadas</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-between gap-4 pt-2">
+                <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Tenho%20interesse%20em%20Alinhadores%20Invis%C3%ADveis%20com%20a%20Dra.%20Ruth%20Costa%20na%20Cl%C3%ADnica%20Odonto%20Maria."
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn-gold px-5 py-3 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center gap-2">
+                  <span>Avaliar Alinhadores</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <span class="text-xs text-noble-muted font-medium">Planejamento 3D</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 2: Facetas e Lentes de Contato Dental -->
+          <div data-parallax="0.025">
+            <article data-reveal style="transition-delay: 120ms;" class="card-boutique h-full rounded-[1.75rem] p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-36 h-36 bg-champagne/10 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-110"></div>
+              <div>
+                <div class="flex items-center justify-between gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-gold-metallic flex items-center justify-center text-noble shadow-gold-subtle">
+                    <i data-lucide="sparkles" class="w-6 h-6"></i>
+                  </div>
+                  <span class="px-3.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-widest bg-ivory-warm text-noble-soft border border-champagne/40">
+                    Estética do Sorriso
+                  </span>
+                </div>
+
+                <h3 class="font-display text-2xl font-semibold text-noble mb-3">
+                  Facetas e Lentes de Contato Dental
+                </h3>
+                <p class="text-noble-soft text-sm sm:text-base leading-relaxed mb-6">
+                  Naturalidade, textura biomimética e proporção áurea do sorriso. Laminados ultrafinos desenhados sob medida para harmonizar formato, cor e volume dental com elegância sutil e respeito à individualidade facial.
+                </p>
+
+                <ul class="space-y-2.5 text-xs sm:text-sm text-noble-soft border-t border-border-subtle pt-5 mb-7">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Estudo de visagismo facial e teste do sorriso (Mock-up) prévio</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Translucidez natural sem aspecto artificial ou opaco</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Preparos ultraconservadores com preservação da estrutura dental</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-between gap-4 pt-2">
+                <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Facetas%20e%20Lentes%20de%20Contato%20Dental%20com%20a%20Dra.%20Ruth%20Costa."
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn-gold px-5 py-3 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center gap-2">
+                  <span>Planejar Meu Sorriso</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <span class="text-xs text-noble-muted font-medium">Proporção Áurea</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 3: Implantes & Reabilitação Oral -->
+          <div data-parallax="-0.025">
+            <article data-reveal class="card-boutique h-full rounded-[1.75rem] p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-36 h-36 bg-champagne/10 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-110"></div>
+              <div>
+                <div class="flex items-center justify-between gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-gold-metallic flex items-center justify-center text-noble shadow-gold-subtle">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                  </div>
+                  <span class="px-3.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-widest bg-ivory-warm text-noble-soft border border-champagne/40">
+                    Função &amp; Segurança
+                  </span>
+                </div>
+
+                <h3 class="font-display text-2xl font-semibold text-noble mb-3">
+                  Implantes &amp; Reabilitação Oral
+                </h3>
+                <p class="text-noble-soft text-sm sm:text-base leading-relaxed mb-6">
+                  Devolução plena da função mastigatória, estabilidade e autoestima com segurança biológica e conforto pós-operatório. Planejamento cirúrgico guiado e próteses de alta fidelidade estética.
+                </p>
+
+                <ul class="space-y-2.5 text-xs sm:text-sm text-noble-soft border-t border-border-subtle pt-5 mb-7">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Planejamento digital preciso e técnicas minimamente traumáticas</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Protocolo de anestesia suave e recuperação tranquila</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Coroas cerâmicas personalizadas que reproduzem dentes naturais</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-between gap-4 pt-2">
+                <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20sobre%20Implantes%20e%20Reabilita%C3%A7%C3%A3o%20Oral%20com%20a%20Dra.%20Ruth%20Costa."
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn-gold px-5 py-3 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center gap-2">
+                  <span>Agendar Avaliação</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <span class="text-xs text-noble-muted font-medium">Conforto Sem Dor</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 4: Odontologia Preventiva & Clareamento a Laser -->
+          <div data-parallax="0.025">
+            <article data-reveal style="transition-delay: 120ms;" class="card-boutique h-full rounded-[1.75rem] p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden group">
+              <div class="absolute top-0 right-0 w-36 h-36 bg-champagne/10 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-110"></div>
+              <div>
+                <div class="flex items-center justify-between gap-4 mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-gold-metallic flex items-center justify-center text-noble shadow-gold-subtle">
+                    <i data-lucide="sun" class="w-6 h-6"></i>
+                  </div>
+                  <span class="px-3.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-widest bg-ivory-warm text-noble-soft border border-champagne/40">
+                    Saúde &amp; Luminosidade
+                  </span>
+                </div>
+
+                <h3 class="font-display text-2xl font-semibold text-noble mb-3">
+                  Odontologia Preventiva &amp; Clareamento a Laser
+                </h3>
+                <p class="text-noble-soft text-sm sm:text-base leading-relaxed mb-6">
+                  Saúde gengival impecável e luminosidade natural do esmalte dentário. Protocolos de profilaxia delicada e clareamento dental assistido com controle rigoroso da sensibilidade.
+                </p>
+
+                <ul class="space-y-2.5 text-xs sm:text-sm text-noble-soft border-t border-border-subtle pt-5 mb-7">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Clareamento com barreiras dessensibilizantes e proteção do esmalte</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Prevenção periodontal delicada com jato de bicarbonato ultrafino</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-champagne-bronze shrink-0"></i>
+                    <span>Manutenção periódica planejada para longevidade das reabilitações</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-between gap-4 pt-2">
+                <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Check-up%20Preventivo%20ou%20Clareamento%20na%20Cl%C3%ADnica%20Odonto%20Maria."
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn-gold px-5 py-3 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center gap-2">
+                  <span>Agendar Profilaxia / Clareamento</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <span class="text-xs text-noble-muted font-medium">Zero Sensibilidade</span>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- INTERLÚDIO EDITORIAL PARALLAX (MANIFESTO DA MARCA BOUTIQUE)               -->
+    <!-- ========================================================================= -->
+    <section class="relative overflow-hidden bg-noble text-ivory py-16 sm:py-20 border-b border-champagne/30">
+      <!-- Monograma Dourado Flutuante em Parallax no Fundo Escuro Nobre -->
+      <div data-parallax="-0.18" class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-[0.06]">
+        <svg class="w-full h-full" aria-hidden="true">
+          <use href="#logo-odonto-maria"></use>
+        </svg>
+      </div>
+      <div data-parallax="0.12" class="pointer-events-none absolute -left-20 top-0 w-72 h-72 rounded-full bg-champagne/10 blur-3xl"></div>
+      <div data-parallax="-0.12" class="pointer-events-none absolute -right-20 bottom-0 w-72 h-72 rounded-full bg-taupe/15 blur-3xl"></div>
+
+      <div data-reveal class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-5">
+        <div class="relative w-14 h-14 mx-auto rounded-2xl overflow-hidden shadow-md border border-champagne/40 shrink-0">
+          <img
+            src="logo-oficial-odonto-maria.jpg"
+            alt="Logo Clínica Odonto Maria"
+            class="w-full h-full object-cover scale-125"
+          />
+        </div>
+        <blockquote class="font-display italic text-xl sm:text-2xl lg:text-3xl text-champagne-light leading-relaxed font-normal">
+          “Cada sorriso guarda uma identidade única. Nossa missão é unir precisão científica, proporção artística e acolhimento humano para que você cuide de si com absoluta serenidade.”
+        </blockquote>
+        <div class="pt-1 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.22em] text-champagne">
+          <span>Dra. Ruth Costa</span>
+          <span>•</span>
+          <span>Responsável Técnica CRO-PB 6910</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- A EXPERIÊNCIA ODONTO MARIA (DIFERENCIAIS BOUTIQUE COM PARALLAX)           -->
+    <!-- ========================================================================= -->
+    <section id="experiencia" class="py-20 sm:py-28 bg-taupe-surface text-noble relative overflow-hidden">
+      <div data-parallax="-0.16" class="pointer-events-none absolute -top-24 right-10 w-96 h-96 rounded-full bg-ivory/25 blur-3xl"></div>
+      <div data-parallax="0.14" class="pointer-events-none absolute bottom-10 -left-20 w-96 h-96 rounded-full bg-champagne-light/25 blur-3xl"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Cabeçalho -->
+        <div data-reveal class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ivory/85 border border-champagne/50 shadow-sm">
+            <i data-lucide="gem" class="w-3.5 h-3.5 text-champagne-bronze"></i>
+            <span class="text-xs uppercase tracking-[0.2em] text-noble font-semibold">Diferenciais Exclusivos</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-noble">
+            A Experiência Odonto Maria
+          </h2>
+          <p class="text-noble/90 text-base sm:text-lg leading-relaxed">
+            Cada detalhe sensorial e tecnológico da clínica foi desenhado para substituir a ansiedade de ir ao dentista por uma jornada de tranquilidade, acolhimento e confiança.
+          </p>
+        </div>
+
+        <!-- 3 Pilares da Experiência Odonto Maria em Cascata Parallax Suave -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 mb-16">
+
+          <!-- Diferencial 1 -->
+          <div data-parallax="-0.03">
+            <div data-reveal class="h-full rounded-[1.75rem] bg-ivory/95 backdrop-blur-md p-8 border border-champagne/50 shadow-boutique flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-13 h-13 rounded-2xl bg-gold-metallic p-3.5 flex items-center justify-center text-noble shadow-sm">
+                    <i data-lucide="scan" class="w-6 h-6"></i>
+                  </div>
+                  <span class="font-monogram text-2xl font-semibold text-champagne-deep/60">01</span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold text-noble mb-3">
+                  Check-up Digital Detalhado
+                </h3>
+                <p class="text-noble-soft text-sm sm:text-base leading-relaxed">
+                  Diagnóstico por imagem em alta definição e fotografia clínica intraoral que permitem a você enxergar, junto com a Dra. Ruth Costa, cada detalhe da sua saúde bucal com clareza e transparência.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-border-subtle flex items-center gap-2 text-xs font-semibold text-champagne-bronze uppercase tracking-wider">
+                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                <span>Diagnóstico Preciso e Transparente</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diferencial 2 -->
+          <div data-parallax="0.01">
+            <div data-reveal style="transition-delay: 120ms;" class="h-full rounded-[1.75rem] bg-ivory/95 backdrop-blur-md p-8 border border-champagne/50 shadow-boutique flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-13 h-13 rounded-2xl bg-gold-metallic p-3.5 flex items-center justify-center text-noble shadow-sm">
+                    <i data-lucide="feather" class="w-6 h-6"></i>
+                  </div>
+                  <span class="font-monogram text-2xl font-semibold text-champagne-deep/60">02</span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold text-noble mb-3">
+                  Protocolo de Conforto Acústico e Anestesia Suave (Sem Dor)
+                </h3>
+                <p class="text-noble-soft text-sm sm:text-base leading-relaxed">
+                  Ambientação serena, aromaterapia sutil, acolhimento acústico e técnicas de anestesia tópica e lenta que eliminam o desconforto, respeitando o tempo e a sensibilidade de cada paciente.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-border-subtle flex items-center gap-2 text-xs font-semibold text-champagne-bronze uppercase tracking-wider">
+                <i data-lucide="heart" class="w-4 h-4"></i>
+                <span>Odontologia Humanizada Sem Traumas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diferencial 3 -->
+          <div data-parallax="0.04">
+            <div data-reveal style="transition-delay: 240ms;" class="h-full rounded-[1.75rem] bg-ivory/95 backdrop-blur-md p-8 border border-champagne/50 shadow-boutique flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-13 h-13 rounded-2xl bg-gold-metallic p-3.5 flex items-center justify-center text-noble shadow-sm">
+                    <i data-lucide="compass" class="w-6 h-6"></i>
+                  </div>
+                  <span class="font-monogram text-2xl font-semibold text-champagne-deep/60">03</span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold text-noble mb-3">
+                  Planejamento Estético Individualizado para Cada Rosto
+                </h3>
+                <p class="text-noble-soft text-sm sm:text-base leading-relaxed">
+                  Nenhum sorriso é padronizado. Analisamos linhas faciais, dinâmica dos lábios, tom de pele e personalidade para desenhar um sorriso autêntico, harmônico e rejuvenescido.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-border-subtle flex items-center gap-2 text-xs font-semibold text-champagne-bronze uppercase tracking-wider">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>Visagismo e Naturalidade Orofacial</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Concierge Interativo de Pré-Agendamento via WhatsApp -->
+        <div data-reveal="scale" class="rounded-[2rem] bg-ivory p-7 sm:p-10 lg:p-12 border border-champagne/60 shadow-boutique-lg">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 space-y-4">
+              <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-champagne-bronze font-semibold">
+                <i data-lucide="message-square-heart" class="w-4 h-4"></i>
+                Concierge Odonto Maria
+              </span>
+              <h3 class="font-display text-2xl sm:text-3xl font-semibold text-noble">
+                Personalize seu Agendamento de Avaliação
+              </h3>
+              <p class="text-sm sm:text-base text-noble-soft leading-relaxed">
+                Selecione sua necessidade principal e o período de sua preferência. Nossa recepção receberá sua mensagem diretamente no WhatsApp para preparar um atendimento exclusivo com a <strong class="text-noble">Dra. Ruth Costa</strong>.
+              </p>
+              <div class="pt-2 flex items-center gap-3 text-xs text-noble-muted">
+                <i data-lucide="lock" class="w-4 h-4 text-champagne-bronze"></i>
+                <span>Atendimento direto, sigiloso e humanizado • CRO-PB 6910</span>
+              </div>
+            </div>
+
+            <form id="concierge-form" class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="patient-name" class="block text-xs font-semibold uppercase tracking-wider text-noble-soft mb-1.5">Seu Nome</label>
+                <input id="patient-name" type="text" placeholder="Ex.: Maria Clara" class="w-full px-4 py-3 rounded-xl bg-ivory-warm border border-border-subtle text-sm text-noble focus:outline-none focus:border-champagne-deep transition-colors" />
+              </div>
+
+              <div>
+                <label for="patient-treatment" class="block text-xs font-semibold uppercase tracking-wider text-noble-soft mb-1.5">Interesse Principal</label>
+                <select id="patient-treatment" class="w-full px-4 py-3 rounded-xl bg-ivory-warm border border-border-subtle text-sm text-noble focus:outline-none focus:border-champagne-deep transition-colors">
+                  <option value="Avaliação Geral & Check-up Digital">Avaliação Geral &amp; Check-up Digital</option>
+                  <option value="Facetas e Lentes de Contato Dental">Facetas e Lentes de Contato Dental</option>
+                  <option value="Alinhadores Invisíveis">Alinhadores Invisíveis</option>
+                  <option value="Implantes & Reabilitação Oral">Implantes &amp; Reabilitação Oral</option>
+                  <option value="Prevenção & Clareamento a Laser">Prevenção &amp; Clareamento a Laser</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="patient-shift" class="block text-xs font-semibold uppercase tracking-wider text-noble-soft mb-1.5">Turno Preferencial</label>
+                <select id="patient-shift" class="w-full px-4 py-3 rounded-xl bg-ivory-warm border border-border-subtle text-sm text-noble focus:outline-none focus:border-champagne-deep transition-colors">
+                  <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
+                  <option value="Tarde (14h às 18h)">Tarde (14h às 18h)</option>
+                  <option value="Final da Tarde / Horário Flexível">Final da Tarde / Horário Flexível</option>
+                </select>
+              </div>
+
+              <div class="flex items-end">
+                <button type="submit" class="btn-gold w-full py-3.5 px-6 rounded-xl text-sm font-semibold inline-flex items-center justify-center gap-2">
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <span>Solicitar Horário no WhatsApp</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- PERGUNTAS FREQUENTES (FAQ)                                                -->
+    <!-- ========================================================================= -->
+    <section id="duvidas" class="py-20 bg-ivory border-b border-border-subtle relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div data-reveal class="text-center space-y-3 mb-12">
+          <span class="text-xs uppercase tracking-[0.2em] text-champagne-bronze font-semibold">Transparência &amp; Cuidado</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-semibold text-noble">Dúvidas Frequentes</h2>
+          <p class="text-noble-soft text-sm sm:text-base">Esclarecimentos importantes sobre nossa filosofia de atendimento na Clínica Odonto Maria.</p>
+        </div>
+
+        <div data-reveal class="space-y-4">
+          <details class="group rounded-2xl bg-ivory-warm border border-gold-translucent p-6 transition-all open:bg-white open:shadow-boutique">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display text-lg font-semibold text-noble">
+              <span>Como funciona a Consulta de Avaliação com a Dra. Ruth Costa?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-champagne-bronze transition-transform duration-300 group-open:rotate-180"></i>
+            </summary>
+            <p class="mt-3 text-sm sm:text-base text-noble-soft leading-relaxed">
+              Nossa avaliação é realizada com tempo exclusivo reservado para você. A Dra. Ruth Costa (CRO-PB 6910) conduz uma conversa detalhada (escuta ativa), seguida pelo check-up clínico e digital para elaborar um plano de tratamento individualizado, explicando cada etapa com total clareza.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl bg-ivory-warm border border-gold-translucent p-6 transition-all open:bg-white open:shadow-boutique">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display text-lg font-semibold text-noble">
+              <span>Tenho receio ou sensibilidade em tratamentos odontológicos. Como a clínica atua?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-champagne-bronze transition-transform duration-300 group-open:rotate-180"></i>
+            </summary>
+            <p class="mt-3 text-sm sm:text-base text-noble-soft leading-relaxed">
+              O conforto sem dor é um pilar inegociável da Clínica Odonto Maria. Utilizamos protocolos de anestesia tópica prévia, aplicação suave e pausada, conforto acústico e ambiente acolhedor livre da estética hospitalar fria, respeitando rigorosamente o seu ritmo.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl bg-ivory-warm border border-gold-translucent p-6 transition-all open:bg-white open:shadow-boutique">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display text-lg font-semibold text-noble">
+              <span>As facetas e lentes de contato dental ficam com aspecto natural?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-champagne-bronze transition-transform duration-300 group-open:rotate-180"></i>
+            </summary>
+            <p class="mt-3 text-sm sm:text-base text-noble-soft leading-relaxed">
+              Sim. Priorizamos a naturalidade, a textura biomimética e a proporção áurea do sorriso. Cada trabalho estético é planejado de acordo com o formato do rosto, tom de pele e expressão labial do paciente, evitando excessos de volume ou brancos artificiais.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- LOCALIZAÇÃO E CONTATO (COM INTEGRAÇÃO GOOGLE MAPS MIRAMAR - JOÃO PESSOA)  -->
+    <!-- ========================================================================= -->
+    <section id="localizacao" class="py-20 sm:py-28 bg-ivory-warm relative overflow-hidden">
+      <div data-parallax="-0.12" class="pointer-events-none absolute -bottom-24 right-1/4 w-96 h-96 rounded-full bg-champagne-light/25 blur-3xl"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div data-reveal class="max-w-3xl mx-auto text-center space-y-4 mb-14">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ivory border border-champagne/45 shadow-sm">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-champagne-bronze"></i>
+            <span class="text-xs uppercase tracking-[0.2em] text-noble font-semibold">Localização &amp; Acesso</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-noble">
+            Um refúgio de cuidado no coração do Miramar
+          </h2>
+          <p class="text-noble-soft text-base sm:text-lg leading-relaxed">
+            Localização privilegiada e de fácil acesso em João Pessoa - PB, pensada para receber você com privacidade, pontualidade e comodidade.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+          <!-- Informações de Endereço, Horário e Acesso -->
+          <div data-parallax="-0.03" class="lg:col-span-5">
+            <div data-reveal class="h-full rounded-[2rem] bg-ivory p-7 sm:p-9 border border-champagne/50 shadow-boutique flex flex-col justify-between space-y-7">
+              <div class="space-y-6">
+                <!-- Cabeçalho Interno -->
+                <div class="flex items-center gap-3.5 pb-5 border-b border-border-subtle">
+                  <div class="relative w-14 h-14 rounded-2xl overflow-hidden shadow-md border border-champagne/40 shrink-0">
+                    <img
+                      src="logo-oficial-odonto-maria.jpg"
+                      alt="Logo Clínica Odonto Maria"
+                      class="w-full h-full object-cover scale-125"
+                    />
+                  </div>
+                  <div>
+                    <h3 class="font-monogram text-base font-semibold tracking-[0.15em] text-noble">CLÍNICA ODONTO MARIA</h3>
+                    <p class="text-xs text-noble-soft">Dra. Ruth Costa • CRO-PB 6910</p>
+                  </div>
+                </div>
+
+                <!-- Endereço -->
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-gold-metallic flex items-center justify-center text-noble shrink-0 mt-0.5">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-noble-muted">Endereço Oficial</h4>
+                    <p class="text-sm sm:text-base font-semibold text-noble mt-1">
+                      Rua Hilda Coutinho Lucena, 74 — Sala 11, 1º andar
+                    </p>
+                    <p class="text-sm text-noble-soft">
+                      Bairro Miramar, João Pessoa - PB • CEP 58043-160
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Horário de Atendimento -->
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-gold-metallic flex items-center justify-center text-noble shrink-0 mt-0.5">
+                    <i data-lucide="clock" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-noble-muted">Horário de Atendimento</h4>
+                    <p class="text-sm sm:text-base font-semibold text-noble mt-1">
+                      Segunda a Sexta: 08h00 às 19h00
+                    </p>
+                    <p class="text-sm text-noble-soft">
+                      Sábados: Atendimento exclusivo mediante agendamento
+                    </p>
+                  </div>
+                </div>
+
+                <!-- WhatsApp / Telefone -->
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-gold-metallic flex items-center justify-center text-noble shrink-0 mt-0.5">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-noble-muted">Concierge &amp; Agendamentos</h4>
+                    <p class="text-sm sm:text-base font-semibold text-noble mt-1">
+                      WhatsApp: (83) 99157-9251
+                    </p>
+                    <p class="text-sm text-noble-soft">
+                      Facilidade de acesso e estacionamento na região
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botões de Ação de Rota e WhatsApp -->
+              <div class="pt-4 border-t border-border-subtle flex flex-col sm:flex-row lg:flex-col gap-3">
+                <a href="https://maps.app.goo.gl/dMkkpBZb4QKZN66p6"
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn-gold w-full py-3.5 px-6 rounded-full text-xs sm:text-sm font-semibold inline-flex items-center justify-center gap-2">
+                  <i data-lucide="navigation" class="w-4 h-4"></i>
+                  <span>Traçar Rota no Google Maps</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20a%20localiza%C3%A7%C3%A3o%20e%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Odonto%20Maria."
+                   target="_blank" rel="noopener noreferrer"
+                   class="w-full py-3.5 px-6 rounded-full text-xs sm:text-sm font-semibold text-noble bg-ivory-warm hover:bg-taupe/20 border border-champagne/45 transition-colors inline-flex items-center justify-center gap-2">
+                  <i data-lucide="message-circle" class="w-4 h-4 text-champagne-bronze"></i>
+                  <span>Agendar via WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mapa Interativo Integrado -->
+          <div data-parallax="0.03" class="lg:col-span-7">
+            <div data-reveal style="transition-delay: 120ms;" class="h-full rounded-[2rem] overflow-hidden border border-champagne/55 shadow-boutique bg-taupe-surface relative min-h-[420px] flex flex-col">
+              <iframe
+                title="Mapa de Localização da Clínica Odonto Maria — Rua Hilda Coutinho Lucena, 74, Miramar, João Pessoa - PB"
+                src="https://www.google.com/maps?q=Rua+Hilda+Coutinho+Lucena,+74,+Miramar,+Joao+Pessoa+-+PB,+58043-160&output=embed"
+                class="w-full flex-1 min-h-[380px] border-0 filter contrast-[0.98] sepia-[0.08]"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+              <div class="bg-noble text-ivory px-6 py-3.5 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <span class="inline-flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-champagne animate-pulse"></span>
+                  <span>Rua Hilda Coutinho Lucena, 74, Sala 11, 1º andar — Miramar, João Pessoa - PB</span>
+                </span>
+                <a href="https://maps.app.goo.gl/dMkkpBZb4QKZN66p6" target="_blank" rel="noopener noreferrer" class="text-champagne hover:underline font-medium inline-flex items-center gap-1">
+                  <span>Abrir no App Google Maps</span>
+                  <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- RODAPÉ INSTITUCIONAL (FOOTER) COM MONOGRAMA DOURADO, CRO-PB 6910 E ÉTICA  -->
+  <!-- ========================================================================= -->
+  <footer class="bg-noble text-ivory/85 border-t border-champagne/30 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-ivory/10">
+
+        <!-- Coluna 1: Monograma Oficial e Posicionamento -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3.5">
+            <div class="relative w-14 h-14 rounded-2xl overflow-hidden shadow-md border border-champagne/40 shrink-0">
+              <img
+                src="logo-oficial-odonto-maria.jpg"
+                alt="Logo Clínica Odonto Maria"
+                class="w-full h-full object-cover scale-125"
+              />
+            </div>
+            <div>
+              <p class="font-monogram text-xl font-semibold tracking-[0.16em] text-ivory">ODONTO MARIA</p>
+              <p class="font-display italic text-sm text-champagne">Dra. Ruth Costa • CRO-PB 6910</p>
+            </div>
+          </div>
+          <p class="text-sm text-ivory/75 leading-relaxed max-w-md">
+            Odontologia humanizada, reabilitação estética, conforto sem dor e tecnologia de ponta em um ambiente boutique planejado para o seu bem-estar em João Pessoa - PB.
+          </p>
+          <div class="pt-1 flex items-center gap-3 text-xs text-champagne-light">
+            <span class="px-3 py-1 rounded-full bg-ivory/10 border border-champagne/25">Responsável Técnica: Dra. Ruth Costa</span>
+            <span class="px-3 py-1 rounded-full bg-ivory/10 border border-champagne/25 font-semibold">CRO-PB 6910</span>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Navegação Rápida -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-monogram text-xs uppercase tracking-[0.2em] text-champagne font-semibold">Navegação</h4>
+          <ul class="space-y-2 text-sm text-ivory/75">
+            <li><a href="#inicio" class="hover:text-champagne transition-colors">Início</a></li>
+            <li><a href="#sobre" class="hover:text-champagne transition-colors">A Clínica &amp; Dra. Ruth Costa</a></li>
+            <li><a href="#tratamentos" class="hover:text-champagne transition-colors">Tratamentos de Excelência</a></li>
+            <li><a href="#experiencia" class="hover:text-champagne transition-colors">A Experiência Odonto Maria</a></li>
+            <li><a href="#localizacao" class="hover:text-champagne transition-colors">Localização &amp; Mapa</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Atendimento & Localização -->
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="font-monogram text-xs uppercase tracking-[0.2em] text-champagne font-semibold">Atendimento &amp; Endereço</h4>
+          <p class="text-sm text-ivory/80 leading-relaxed">
+            Rua Hilda Coutinho Lucena, 74, Sala 11, 1º andar<br />
+            Bairro Miramar, João Pessoa - PB • CEP 58043-160
+          </p>
+          <p class="text-sm text-ivory/80">
+            WhatsApp: <a href="https://wa.me/5583991579251" target="_blank" rel="noopener noreferrer" class="text-champagne hover:underline">(83) 99157-9251</a>
+          </p>
+          <div class="pt-2">
+            <a href="https://maps.app.goo.gl/dMkkpBZb4QKZN66p6"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 text-xs text-champagne hover:text-champagne-light transition-colors">
+              <i data-lucide="map" class="w-3.5 h-3.5"></i>
+              <span>Ver localização oficial no Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Aviso Ético e Regulamentar CFO / CRO-PB -->
+      <div class="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-ivory/60 leading-relaxed">
+        <p class="max-w-3xl">
+          <strong class="text-ivory/85">Aviso Ético Odontológico (CFO/CRO):</strong> As informações contidas nesta página possuem caráter exclusivamente institucional e educativo, em estrita conformidade com o Código de Ética Odontológica (Resolução CFO-118/2012 e CFO-196/2019). Toda indicação clínica, diagnóstico ou plano de tratamento requer avaliação presencial individualizada. Responsável Técnica: <strong class="text-champagne">Dra. Maria Ruth Costa Rodrigues (Dra. Ruth Costa) — CRO-PB 6910</strong>.
+        </p>
+        <p class="shrink-0 text-ivory/70">
+          &copy; <span id="current-year">2026</span> Clínica Odonto Maria. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP (PULSAR DOURADO SUAVE + MENSAGEM PRÉ-DEFINIDA) -->
+  <!-- ========================================================================= -->
+  <a href="https://wa.me/5583991579251?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Cl%C3%ADnica%20Odonto%20Maria%20e%20gostaria%20de%20agendar%20uma%20Consulta%20de%20Avalia%C3%A7%C3%A3o%20com%20a%20Dra.%20Ruth%20Costa."
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Agendar avaliação pelo WhatsApp da Clínica Odonto Maria"
+     class="fixed bottom-6 right-6 z-50 group flex items-center gap-3 rounded-full btn-gold p-3.5 sm:px-5 sm:py-3.5 animate-gold-pulse">
+    <span class="w-6 h-6 flex items-center justify-center rounded-full bg-noble text-champagne-light">
+      <i data-lucide="message-circle" class="w-4 h-4"></i>
+    </span>
+    <span class="hidden sm:inline-block text-xs font-bold uppercase tracking-wider text-noble">
+      Agendar no WhatsApp
+    </span>
+  </a>
+
+  <!-- ========================================================================= -->
+  <!-- ENGINE DE PARALLAX SUAVE (60FPS LERP), REVEAL EDITORIAL & INTERATIVIDADE  -->
+  <!-- ========================================================================= -->
+  <script>
+    // 1. Inicializa os ícones Lucide
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+    // 2. Atualiza o ano atual no rodapé
+    const yearEl = document.getElementById('current-year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+
+    // 3. Controle do Menu Mobile
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', String(isHidden));
+      });
+
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // 4. Formulário Concierge -> WhatsApp Direto com Mensagem Personalizada
+    const conciergeForm = document.getElementById('concierge-form');
+    if (conciergeForm) {
+      conciergeForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const nameInput = document.getElementById('patient-name');
+        const treatmentSelect = document.getElementById('patient-treatment');
+        const shiftSelect = document.getElementById('patient-shift');
+
+        const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Paciente';
+        const treatment = treatmentSelect ? treatmentSelect.value : 'Avaliação Geral';
+        const shift = shiftSelect ? shiftSelect.value : 'Horário Flexível';
+
+        const text = `Olá! Meu nome é ${name}. Gostaria de agendar uma Consulta de Avaliação na Clínica Odonto Maria com a Dra. Ruth Costa (CRO-PB 6910).\n\n• Interesse principal: ${treatment}\n• Turno de preferência: ${shift}`;
+        const url = `https://wa.me/5583991579251?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      });
+    }
+
+    // 5. IntersectionObserver para Reveal Editorial Suave ao Rolar
+    const revealElements = document.querySelectorAll('[data-reveal]');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+      revealElements.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealElements.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // 6. Motor Parallax Fino com Interpolação Linear (LERP) a 60fps
+    (function initLuxuryParallax() {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      const parallaxNodes = Array.from(document.querySelectorAll('[data-parallax]')).map((el) => ({
+        el,
+        speed: parseFloat(el.getAttribute('data-parallax')) || 0,
+        currentY: 0,
+        targetY: 0
+      }));
+
+      const progressBar = document.getElementById('scroll-progress');
+      const navbar = document.getElementById('navbar');
+
+      let scrollY = window.scrollY || window.pageYOffset;
+      let viewportH = window.innerHeight;
+      let docHeight = document.documentElement.scrollHeight - viewportH;
+
+      function updateMetrics() {
+        viewportH = window.innerHeight;
+        docHeight = Math.max(1, document.documentElement.scrollHeight - viewportH);
+      }
+
+      window.addEventListener('resize', updateMetrics, { passive: true });
+      window.addEventListener(
+        'scroll',
+        () => {
+          scrollY = window.scrollY || window.pageYOffset;
+
+          // Barra de progresso dourada no topo
+          if (progressBar) {
+            const pct = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+            progressBar.style.width = `${pct}%`;
+          }
+
+          // Refinamento de sombra na Navbar ao rolar
+          if (navbar) {
+            if (scrollY > 24) {
+              navbar.classList.add('shadow-boutique', 'border-champagne/40');
+            } else {
+              navbar.classList.remove('shadow-boutique', 'border-champagne/40');
+            }
+          }
+        },
+        { passive: true }
+      );
+
+      function renderParallaxLoop() {
+        const isMobile = window.innerWidth < 768;
+        const dampingFactor = isMobile ? 0.45 : 1; // Mais sutil em telas mobile
+
+        for (let i = 0; i < parallaxNodes.length; i++) {
+          const item = parallaxNodes[i];
+          const rect = item.el.getBoundingClientRect();
+          const elementCenter = rect.top + rect.height * 0.5;
+          const distanceFromViewportCenter = elementCenter - viewportH * 0.5;
+
+          // Deslocamento proporcional à distância do centro da tela (limitado para manter elegância)
+          const rawShift = -distanceFromViewportCenter * item.speed * dampingFactor;
+          item.targetY = Math.max(-65, Math.min(65, rawShift));
+
+          // Interpolação suave (LERP) para movimento amanteigado
+          item.currentY += (item.targetY - item.currentY) * 0.11;
+
+          if (Math.abs(item.currentY) > 0.05) {
+            item.el.style.transform = `translate3d(0, ${item.currentY.toFixed(2)}px, 0)`;
+          }
+        }
+
+        requestAnimationFrame(renderParallaxLoop);
+      }
+
+      updateMetrics();
+      requestAnimationFrame(renderParallaxLoop);
+    })();
+  </script>
+</body>
+</html>

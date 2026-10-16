@@ -1,0 +1,381 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="170 210 600 615" width="100%" height="100%">
+  <defs>
+    <!-- Soft realistic 3D drop shadow on the taupe surface -->
+    <filter id="om-drop-shadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="4" dy="10" stdDeviation="7" flood-color="#231D1E" flood-opacity="0.38" />
+      <feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#1A1415" flood-opacity="0.28" />
+    </filter>
+
+    <!-- Specular star glow filter -->
+    <filter id="om-glint-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- 1. Upper-Left Crown Ribbon Main Gradient (Champagne Gold with bright valley highlight) -->
+    <linearGradient id="om-crown-left-main" x1="207" y1="295" x2="599" y2="355" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDF6E2" />
+      <stop offset="14%" stop-color="#DFC48D" />
+      <stop offset="35%" stop-color="#D7BA80" />
+      <stop offset="62%" stop-color="#F7EBD0" />
+      <stop offset="78%" stop-color="#FFFDF8" />
+      <stop offset="92%" stop-color="#E5CA93" />
+      <stop offset="100%" stop-color="#B89452" />
+    </linearGradient>
+
+    <!-- Upper-Left Crown Inner/Lower Bevel Shadow Gradient -->
+    <linearGradient id="om-crown-left-bevel" x1="255" y1="285" x2="599" y2="395" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8B6A31" />
+      <stop offset="30%" stop-color="#6F5120" />
+      <stop offset="65%" stop-color="#9E7C3E" />
+      <stop offset="85%" stop-color="#DEC28A" />
+      <stop offset="100%" stop-color="#8E6C32" />
+    </linearGradient>
+
+    <!-- 2. Upper-Right Crown & Flank Main Gradient -->
+    <linearGradient id="om-crown-right-main" x1="460" y1="260" x2="725" y2="555" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D8BA7F" />
+      <stop offset="22%" stop-color="#FFFDF7" />
+      <stop offset="42%" stop-color="#FFFBF0" />
+      <stop offset="62%" stop-color="#EAD29E" />
+      <stop offset="82%" stop-color="#DFC38B" />
+      <stop offset="100%" stop-color="#F7EACF" />
+    </linearGradient>
+
+    <!-- Upper-Right Crown Lower/Inner Bevel Gradient -->
+    <linearGradient id="om-crown-right-bevel" x1="460" y1="310" x2="710" y2="578" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A58243" />
+      <stop offset="28%" stop-color="#C8A76A" />
+      <stop offset="50%" stop-color="#755622" />
+      <stop offset="75%" stop-color="#98753A" />
+      <stop offset="100%" stop-color="#7B5B26" />
+    </linearGradient>
+
+    <!-- 3. Left Root Blade Main Gradient -->
+    <linearGradient id="om-left-root-main" x1="220" y1="360" x2="365" y2="766" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F6E8C8" />
+      <stop offset="18%" stop-color="#FFFDF8" />
+      <stop offset="40%" stop-color="#E8CE97" />
+      <stop offset="68%" stop-color="#C39E5C" />
+      <stop offset="88%" stop-color="#A88240" />
+      <stop offset="100%" stop-color="#E5CA92" />
+    </linearGradient>
+
+    <!-- Left Root Blade Inner Bevel -->
+    <linearGradient id="om-left-root-bevel" x1="250" y1="360" x2="375" y2="766" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B99758" />
+      <stop offset="45%" stop-color="#F7E9C8" />
+      <stop offset="80%" stop-color="#8D6B32" />
+      <stop offset="100%" stop-color="#6F511F" />
+    </linearGradient>
+
+    <!-- 4. M Left Stem & Diagonal Lit Facet (Bright Champagne) -->
+    <linearGradient id="om-m-lit" x1="350" y1="350" x2="640" y2="780" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFDF7" />
+      <stop offset="22%" stop-color="#F9EDD2" />
+      <stop offset="48%" stop-color="#E7CC95" />
+      <stop offset="75%" stop-color="#D5B475" />
+      <stop offset="100%" stop-color="#F3E2BE" />
+    </linearGradient>
+
+    <!-- M Shaded Facet (Burnished Gold / Bronze) -->
+    <linearGradient id="om-m-shade" x1="370" y1="380" x2="620" y2="795" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C6A30" />
+      <stop offset="25%" stop-color="#B79353" />
+      <stop offset="55%" stop-color="#9A7638" />
+      <stop offset="82%" stop-color="#7D5C25" />
+      <stop offset="100%" stop-color="#684B1B" />
+    </linearGradient>
+
+    <!-- M Right Vertical Column Lit Facet -->
+    <linearGradient id="om-m-right-lit" x1="635" y1="390" x2="652" y2="694" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E4C0" />
+      <stop offset="30%" stop-color="#FFFDF8" />
+      <stop offset="65%" stop-color="#F4E3BE" />
+      <stop offset="100%" stop-color="#D8B87A" />
+    </linearGradient>
+
+    <!-- M Right Vertical Column Shaded Facet -->
+    <linearGradient id="om-m-right-shade" x1="650" y1="390" x2="684" y2="694" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C8A668" />
+      <stop offset="35%" stop-color="#B38F4F" />
+      <stop offset="75%" stop-color="#9B783B" />
+      <stop offset="100%" stop-color="#765723" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main Logo Group with 3D Drop Shadow -->
+  <g filter="url(#om-drop-shadow)">
+
+    <!-- ======================================================================= -->
+    <!-- 1. UPPER-LEFT TOOTH CROWN RIBBON (With horizontal left cut & valley dip) -->
+    <!-- ======================================================================= -->
+    <g id="crown-left">
+      <!-- Outer/Lower 3D Bevel Rim -->
+      <path d="M 204 339
+               C 212 280, 250 241, 302 241
+               C 357 241, 406 282, 457 320
+               C 493 347, 543 360, 602 327
+               C 576 380, 539 402, 506 402
+               C 463 402, 420 370, 370 330
+               C 335 301, 313 287, 294 288
+               C 274 289, 265 310, 260 339
+               Z"
+            fill="url(#om-crown-left-bevel)" />
+
+      <!-- Main Sculpted Upper-Left Ribbon Surface -->
+      <path d="M 209 333
+               C 217 281, 253 245, 302 245
+               C 355 245, 404 285, 455 323
+               C 491 350, 540 362, 596 332
+               C 570 374, 536 391, 505 391
+               C 464 391, 422 361, 372 321
+               C 336 292, 313 278, 293 279
+               C 270 280, 259 303, 254 333
+               Z"
+            fill="url(#om-crown-left-main)" />
+
+      <!-- Lower Valley Chiseled Bevel Facet -->
+      <path d="M 432 366
+               C 462 387, 486 391, 505 391
+               C 536 391, 570 374, 596 332
+               L 602 327
+               C 576 380, 539 402, 506 402
+               C 480 402, 454 390, 432 366 Z"
+            fill="#C7A66B" opacity="0.85" />
+
+      <!-- Crisp Specular Edge Highlight on Crown Left -->
+      <path d="M 210 332
+               C 218 282, 254 246, 302 246
+               C 354 246, 403 286, 455 324
+               C 491 351, 540 362, 595 333"
+            fill="none" stroke="#FFFDF8" stroke-width="1.6" stroke-linecap="round" opacity="0.85" />
+    </g>
+
+    <!-- ======================================================================= -->
+    <!-- 2. UPPER-RIGHT TOOTH CROWN & RIGHT FLANK RIBBON                         -->
+    <!-- ======================================================================= -->
+    <g id="crown-right">
+      <!-- Base/Inner 3D Bevel Rim -->
+      <path d="M 457 294
+               C 483 312, 506 310, 538 283
+               C 572 256, 604 241, 636 241
+               C 689 241, 730 281, 736 348
+               C 742 416, 722 499, 688 582
+               C 691 514, 693 438, 687 384
+               C 681 329, 666 289, 631 289
+               C 601 289, 575 316, 543 334
+               C 511 351, 482 336, 457 294 Z"
+            fill="url(#om-crown-right-bevel)" />
+
+      <!-- Main Sculpted Upper-Right & Flank Surface -->
+      <path d="M 462 298
+               C 485 313, 507 311, 539 285
+               C 573 258, 604 245, 636 245
+               C 686 245, 725 283, 731 348
+               C 737 413, 718 494, 690 573
+               C 695 508, 698 436, 692 382
+               C 686 324, 670 281, 632 281
+               C 600 281, 574 308, 542 325
+               C 512 341, 485 329, 462 298 Z"
+            fill="url(#om-crown-right-main)" />
+
+      <!-- Sculpted Lower-Left Groove Bevel Strip (under the right cusp) -->
+      <path d="M 457 294
+               C 482 329, 511 341, 542 325
+               C 574 308, 600 281, 632 281
+               L 631 289
+               C 601 289, 575 316, 543 334
+               C 511 351, 482 336, 457 294 Z"
+            fill="#C9A86A" />
+
+      <!-- Crisp Specular Rim along Right Cusp & Outer Shoulder -->
+      <path d="M 463 298
+               C 486 312, 508 310, 539 285
+               C 573 258, 604 245, 636 245
+               C 686 245, 725 283, 731 348
+               C 736 404, 721 478, 691 568"
+            fill="none" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" opacity="0.9" />
+    </g>
+
+    <!-- ======================================================================= -->
+    <!-- 3. OUTER-LEFT ROOT BLADE (Below the left horizontal cut)                -->
+    <!-- ======================================================================= -->
+    <g id="root-left">
+      <!-- Bevel Base -->
+      <path d="M 203 367
+               L 256 358
+               C 256 445, 275 535, 315 632
+               C 337 685, 357 728, 376 767
+               C 336 720, 291 658, 255 588
+               C 219 518, 202 442, 203 367 Z"
+            fill="url(#om-left-root-bevel)" />
+
+      <!-- Main Lit Blade Surface -->
+      <path d="M 207 371
+               L 250 363
+               C 251 447, 270 536, 310 632
+               C 331 682, 351 723, 371 761
+               C 334 716, 292 655, 257 586
+               C 222 517, 206 443, 207 371 Z"
+            fill="url(#om-left-root-main)" />
+
+      <!-- Inner Bright Bevel Line on Left Root Blade -->
+      <path d="M 207 371 L 250 363 C 251 447, 270 536, 310 632 C 331 682, 351 723, 371 761"
+            fill="none" stroke="#FFFDF6" stroke-width="1.5" stroke-linecap="round" opacity="0.85" />
+    </g>
+
+    <!-- ======================================================================= -->
+    <!-- 4. THE COMPLETE 4-LEGGED ROMAN "M" + SWEEPING ARCH + CENTRAL ROOT APEX  -->
+    <!-- ======================================================================= -->
+    <g id="monogram-m">
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- LEG 1 OF THE "M": Left Slender Vertical Stem & Roman Pedestal Serif -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- Left Stem - Lit Left Facet (x=376..383) + Left Pedestal Bracket -->
+      <path d="M 376 388
+               L 383 393
+               L 383 684
+               L 353 694
+               C 367 688, 375 678, 376 662
+               Z"
+            fill="url(#om-m-lit)" />
+
+      <!-- Left Stem - Shaded Right Facet (x=383..390) + Right Pedestal Bracket -->
+      <path d="M 383 393
+               L 390 400
+               L 390 662
+               C 391 678, 399 688, 413 694
+               L 383 684
+               Z"
+            fill="url(#om-m-shade)" />
+
+      <!-- Left Stem - Bottom Pedestal Bevel Triangle -->
+      <polygon points="353,694 383,684 413,694 410,696 356,696" fill="#6B4E1E" />
+      <line x1="354" y1="693.5" x2="412" y2="693.5" stroke="#F8E9C8" stroke-width="1" opacity="0.75" />
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- LEG 3 OF THE "M": Ascending Center-to-Right Diagonal Stroke         -->
+      <!-- ("A 3ª perna do M" rising from (523,655) to top of Right Stem)      -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- Upper-Left Lit Facet of Leg 3 -->
+      <path d="M 522 655
+               L 636 391
+               L 640 398
+               L 529 663
+               Z"
+            fill="url(#om-m-lit)" />
+
+      <!-- Lower-Right Shaded Facet of Leg 3 -->
+      <path d="M 529 663
+               L 640 398
+               L 644 411
+               L 537 672
+               C 534 667, 531 664, 529 663
+               Z"
+            fill="url(#om-m-shade)" />
+
+      <!-- Crisp Center Ridge Highlight on Leg 3 -->
+      <line x1="523" y1="656" x2="636" y2="391" stroke="#FFFDF7" stroke-width="1.3" stroke-linecap="round" opacity="0.9" />
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- LEG 2 OF THE "M": Sweeping Left Arch + Thick Descending Diagonal    -->
+      <!-- Stroke + Long Curved Central-Right Root Apex                        -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- Upper-Right Lit Facet of Arch + Leg 2 + Root Tail (Above Center Ridge) -->
+      <path d="M 206 357
+               C 248 339, 297 339, 345 361
+               C 380 377, 407 408, 435 456
+               C 469 514, 502 586, 535 656
+               C 558 704, 585 754, 621 797
+               C 582 758, 550 706, 521 656
+               C 488 586, 454 514, 420 452
+               C 394 405, 368 377, 339 365
+               C 294 345, 248 345, 206 357
+               Z"
+            fill="url(#om-m-lit)" />
+
+      <!-- Lower-Left Shaded Facet of Arch + Leg 2 + Root Tail (Below Center Ridge) -->
+      <path d="M 206 357
+               C 248 345, 294 345, 339 365
+               C 368 377, 394 405, 420 452
+               C 454 514, 488 586, 521 656
+               C 550 706, 582 758, 621 797
+               C 575 763, 537 711, 508 652
+               C 475 584, 441 510, 405 446
+               C 385 410, 365 385, 335 370
+               C 291 348, 248 348, 206 357
+               Z"
+            fill="url(#om-m-shade)" />
+
+      <!-- Small V-Junction Chiseled Notch Highlight where Leg 3 meets Leg 2 (at 521..536, 655..670) -->
+      <path d="M 521 656 L 535 656 L 539 676 L 529 663 Z" fill="#E8CE97" opacity="0.9" />
+
+      <!-- Crisp 3D Spine Highlight along the Center Ridge of Arch & Leg 2 -->
+      <path d="M 208 357
+               C 248 343, 295 343, 341 363
+               C 372 377, 398 406, 425 453
+               C 459 514, 493 586, 525 656
+               C 553 706, 583 757, 620 796"
+            fill="none" stroke="#FFFDF8" stroke-width="1.6" stroke-linecap="round" opacity="0.88" />
+
+      <!-- ------------------------------------------------------------------- -->
+      <!-- LEG 4 OF THE "M": Thick Right Vertical Column & Top/Bottom Serifs   -->
+      <!-- ------------------------------------------------------------------- -->
+      <!-- Left Lit Facet of Right Vertical Column (x=635..650) + Left Bottom Pedestal Serif -->
+      <path d="M 635 391
+               L 650 397
+               L 650 683
+               L 615 694
+               C 628 688, 634 678, 635 662
+               Z"
+            fill="url(#om-m-right-lit)" />
+
+      <!-- Right Shaded Facet of Right Vertical Column (x=650..665) + Top-Right Serif & Bottom-Right Pedestal Serif -->
+      <path d="M 650 397
+               L 684 391
+               C 671 397, 665 407, 665 422
+               L 665 662
+               C 666 678, 672 688, 684 694
+               L 650 683
+               Z"
+            fill="url(#om-m-right-shade)" />
+
+      <!-- Top Horizontal Bevel Bar of Right Column (y=391..397, x=635..684) -->
+      <polygon points="635,391 684,391 650,397" fill="#FFFBF0" />
+
+      <!-- Bottom Pedestal Bevel Triangle of Right Column -->
+      <polygon points="615,694 650,683 684,694 681,696 618,696" fill="#6B4E1E" />
+      <line x1="616" y1="693.5" x2="683" y2="693.5" stroke="#F8E9C8" stroke-width="1" opacity="0.75" />
+
+      <!-- Crisp Vertical Center Ridge Highlight on Right Column -->
+      <line x1="650" y1="397" x2="650" y2="683" stroke="#FFFDF8" stroke-width="1.5" stroke-linecap="round" opacity="0.85" />
+    </g>
+
+    <!-- ======================================================================= -->
+    <!-- 5. REALISTIC SPECULAR LIGHT GLINTS (Matching the photo's light points)  -->
+    <!-- ======================================================================= -->
+    <!-- Glint 1: Central crown valley highlight (x=500, y=350) -->
+    <g transform="translate(500, 349)" filter="url(#om-glint-blur)" opacity="0.92">
+      <ellipse cx="0" cy="0" rx="14" ry="5" transform="rotate(18)" fill="#FFFFFF" opacity="0.65" />
+      <path d="M -18 0 L 18 0 M 0 -12 L 0 12" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+      <circle cx="0" cy="0" r="3.5" fill="#FFFFFF" />
+    </g>
+
+    <!-- Glint 2: Upper-right cusp peak star glint (x=634, y=244) -->
+    <g transform="translate(634, 244)" filter="url(#om-glint-blur)" opacity="0.95">
+      <circle cx="0" cy="0" r="7" fill="#FFFFFF" opacity="0.6" />
+      <path d="M -16 0 L 16 0 M 0 -16 L 0 16 M -8 -8 L 8 8 M -8 8 L 8 -8" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" />
+      <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
+    </g>
+
+    <!-- Glint 3: Subtle sheen on Upper-Right Shoulder (x=688, y=268) -->
+    <g transform="translate(688, 268)" filter="url(#om-glint-blur)" opacity="0.75">
+      <ellipse cx="0" cy="0" rx="9" ry="3.5" transform="rotate(38)" fill="#FFFFFF" opacity="0.6" />
+    </g>
+  </g>
+</svg>
